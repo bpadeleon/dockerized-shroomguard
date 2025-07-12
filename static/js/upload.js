@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const fileInput = document.getElementById('file-input');
     const uploadArea = document.getElementById('upload-area');
+    const chooseFileBtn = document.getElementById('choose-file-btn');
     const uploadProgress = document.getElementById('upload-progress');
     const imageDisplay = document.getElementById('image-display');
     const loadingOverlay = document.getElementById('loading-overlay');
@@ -16,9 +17,20 @@ document.addEventListener('DOMContentLoaded', function() {
     uploadArea.addEventListener('dragleave', handleDragLeave);
     uploadArea.addEventListener('drop', handleDrop);
     
-    // Click handler for upload area
-    uploadArea.addEventListener('click', function() {
-        fileInput.click();
+    // Click handler for the choose file button
+    if (chooseFileBtn) {
+        chooseFileBtn.addEventListener('click', function(event) {
+            event.stopPropagation();
+            fileInput.click();
+        });
+    }
+    
+    // Click handler for upload area (but not on the button)
+    uploadArea.addEventListener('click', function(event) {
+        // Only trigger if we didn't click on the button
+        if (!event.target.closest('.upload-btn')) {
+            fileInput.click();
+        }
     });
 });
 
