@@ -17,8 +17,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['RESULT_FOLDER'] = RESULT_FOLDER
 
 # Roboflow API configuration
-ROBOFLOW_API_URL = "https://outline.roboflow.com/final-data-set-zs3lw/2"
-ROBOFLOW_API_KEY = "5yNSbYmPfQArT0CrClDY"
+ROBOFLOW_API_URL = "https://detect.roboflow.com/mushroom-w7ucu/13"
+ROBOFLOW_API_KEY = "LpkUpv6XAkCrQs0L9R8O"
 
 @app.route('/')
 def home():
