@@ -127,4 +127,4 @@ def count_prediction_classes(predictions):
     return class_counts
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=False)
