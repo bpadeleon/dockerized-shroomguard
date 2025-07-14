@@ -1,3 +1,3 @@
 ## Project Description 
 
-Ready to deploy version of our deep-learning model which is capable of identying oyster mushroom readiness, guided by both local and international standards. 
+This project features a ready-to-deploy deep learning model designed to identify the readiness of oyster mushrooms. The model’s training is guided by both local and international standards, specifically the USDA Grades for Oyster Mushrooms and PNS/BAFS guidelines. This ensures reliable, standardized assessment for growers and industry professionals.
