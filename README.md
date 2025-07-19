@@ -14,3 +14,4 @@ https://github.com/user-attachments/assets/426b3242-bcfb-40bf-a253-2c11edf96d17
   <img width="755" height="203" src="https://github.com/user-attachments/assets/ecbc7e09-5b99-45ac-a1b9-ef83d6afd50c" alt="CI/CD Pipeline" />
 </p>
 
+Whenever code is committed to the repository, a Docker image is automatically built. Once the build is complete, the image is pushed to the Elastic Container Registry, making it ready for deployment.
