@@ -15,7 +15,7 @@ phases:
       - echo Pushing Docker image...
       - docker push 135808940904.dkr.ecr.ap-southeast-2.amazonaws.com/simple-docker-service-02aa5a5f9a45:latest
       - echo Writing imagedefinitions.json...
-      - printf '[{"name":"simple-docker-service-02aa5a5f9a45","135808940904.dkr.ecr.ap-southeast-2.amazonaws.com/simple-docker-service-02aa5a5f9a45:latest":"%s"}]' 135808940904.dkr.ecr.ap-southeast-2.amazonaws.com/simple-docker-service-02aa5a5f9a45:latest > imagedefinitions.json
+      - printf '[{"name":"simple-docker-service-02aa5a5f9a45","imageUri":"135808940904.dkr.ecr.ap-southeast-2.amazonaws.com/simple-docker-service-02aa5a5f9a45:latest"}]' > imagedefinitions.json
 
 artifacts:
   files:
