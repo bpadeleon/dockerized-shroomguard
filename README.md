@@ -10,8 +10,7 @@ To run this application into your own server, simply clone the repository, run t
 https://github.com/user-attachments/assets/426b3242-bcfb-40bf-a253-2c11edf96d17
 
 ## CI/CD Pipeline
-<p align="center">
-  <img width="755" height="203" src="https://github.com/user-attachments/assets/ecbc7e09-5b99-45ac-a1b9-ef83d6afd50c" alt="CI/CD Pipeline" />
-</p>
+
+<img width="666" height="375" alt="CICD Pipeline" src="https://github.com/user-attachments/assets/a34caee9-def4-47bd-8629-1a67ffbe1772" />
 
 Whenever code is committed to the repository, a Docker image is automatically built. Once the build is complete, the image is pushed to the Elastic Container Registry, making it ready for deployment.
