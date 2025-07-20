@@ -12,6 +12,7 @@ pipeline{
                 }
             }
             environment {
+                // create temporary environment variables
                 PYTHONPATH = '/tmp/pip-tmp/lib/python3.11/site-packages'
                 PATH = '/tmp/pip-tmp/bin:$PATH'
             }
