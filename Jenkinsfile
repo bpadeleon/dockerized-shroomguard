@@ -8,6 +8,7 @@ pipeline{
                 docker{
                     image 'python:3.11-slim'
                     reuseNode true
+                    args '--network=host'
                 }
             }
             steps {
