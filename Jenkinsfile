@@ -45,12 +45,11 @@ pipeline{
                 }
             }
         }
-        stage('Deploy'){
-            steps{
-                sh 'docker build --network=host --dns=8.8.8.8 -t mushroom-app:latest .'
+        stage('Deploy') {
+            steps {
+                sh 'docker build --network=host -t mushroom-app:latest .'
                 sh 'docker run -d -p 5000:5000 --name mushroom-app mushroom-app:latest'
             }
-
         }
 
     }
