@@ -11,16 +11,14 @@ pipeline{
                     args '--network=host'
                 }
             }
-            environment {
-                PYTHONPATH = '/tmp/pip-tmp/lib/python3.11/site-packages'
-                PATH = '/tmp/pip-tmp/bin:$PATH'
-            }
+
             steps {
                 // list directory contents
                 sh 'ls -la'
                 sh 'mkdir -p /tmp/pip-tmp'
                 // Test application if its working and run
                 sh 'pip install --no-cache-dir --upgrade --prefix=/tmp/pip-tmp -r requirements.txt'
+                sh 'pip install --no-cache-dir --upgrade --prefix=/tmp/pip-tmp pytest'
                 sh 'pytest'
             }
         }
