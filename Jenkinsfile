@@ -28,7 +28,7 @@ pipeline{
 
         stage('Update Dockerfile') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
+                withCredentials([usernamePassword(credentialsId: 'github_creds', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
                     sh '''
                         git config user.name "jenkins-bot"
                         git config user.email "jenkins@example.com"
