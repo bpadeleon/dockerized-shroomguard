@@ -33,16 +33,21 @@ pipeline{
                         git config user.name "jenkins-bot"
                         git config user.email "jenkins@example.com"
                         git remote set-url origin https://${GIT_USER}:${GIT_PASS}@github.com/bpadeleon/dockerized-shroomguard.git
-                        git add Dockerfile
-                        git diff --cached --quiet || git commit -m "chore(ci): update Dockerfile after successful test"
-                        git push origin HEAD:main
+
+                        git add .
+                        if ! git diff --cached --quiet; then
+                            git commit -m "chore(ci): update codebase after successful test"
+                            git push origin HEAD:main
+                        else
+                            echo "No changes to commit"
+                        fi
                     '''
                 }
             }
         }
         stage('Deploy'){
             steps{
-                sh 'docker build -t mushroom-app:latest .'
+                sh 'docker build --network=host --dns=8.8.8.8 -t mushroom-app:latest .'
                 sh 'docker run -d -p 5000:5000 --name mushroom-app mushroom-app:latest'
             }
 
