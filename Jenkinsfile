@@ -26,8 +26,29 @@ pipeline{
         }
         stage('Test'){
             steps{ 
-                sh 'test -f ./mushroom.py'
+                // Test Application if its running
+                sh 'python mushroom.py'
+                sleep time: 5, unit: 'SECONDS'
+                sh 'echo "Application is running successfully"'
             }
+        }
+        stage('Update Dockerfile') {
+            steps {
+                script {
+                    sh '''
+                        git add Dockerfile
+                        git diff --cached --quiet || git commit -m "chore(ci): update Dockerfile after successful test"
+                        git push origin HEAD:main
+                    '''
+                }
+            }
+        }
+        stage('Deploy'){
+            steps{
+                sh 'docker build -t mushroom-app:latest .'
+                sh 'docker run -d -p 5000:5000 --name mushroom-app mushroom-app:latest'
+            }
+
         }
 
     }
