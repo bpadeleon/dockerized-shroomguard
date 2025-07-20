@@ -2,10 +2,22 @@ pipeline{
     agent any
 
     stages {
-        stage('Initial Pipeline'){
+        stage('Build'){
+            agent{
+                // Initiate Build Environment
+                docker{
+                    image 'python:3.11-slim'
+                    reuseNode true
+                }
+            }
             steps {
-                echo 'This is the initial pipeline stage'
+                // list directory contents
+                sh 'ls -la'
+                // Test application if its working and run
+                sh 'pip install -r requirements.txt'
+                sh 'pytest'
             }
         }
+
     }
 }
