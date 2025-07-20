@@ -17,7 +17,7 @@ pipeline{
                 sh 'mkdir -p /tmp/pip-tmp'
                 // Test application if its working and run
                 sh 'pip install --no-cache-dir --upgrade --prefix=/tmp/pip-tmp -r requirements.txt'
-                sh 'py mushroom.py'
+                sh 'python mushroom.py'
             }
         }
 
