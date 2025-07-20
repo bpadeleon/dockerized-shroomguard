@@ -22,16 +22,12 @@ pipeline{
                 sh 'mkdir -p /tmp/pip-tmp'
                 // Test application if its working and run
                 sh 'pip install --no-cache-dir --upgrade --prefix=/tmp/pip-tmp -r requirements.txt'
-            }
-        }
-        stage('Test'){
-            steps{ 
-                // Test Application if its running
                 sh 'python mushroom.py'
                 sleep time: 5, unit: 'SECONDS'
                 sh 'echo "Application is running successfully"'
             }
         }
+
         stage('Update Dockerfile') {
             steps {
                 script {
