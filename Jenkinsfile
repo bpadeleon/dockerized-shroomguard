@@ -28,8 +28,11 @@ pipeline{
 
         stage('Update Dockerfile') {
             steps {
-                script {
+                withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
                     sh '''
+                        git config user.name "jenkins-bot"
+                        git config user.email "jenkins@example.com"
+                        git remote set-url origin https://${GIT_USER}:${GIT_PASS}@github.com/bpadeleon/dockerized-shroomguard.git
                         git add Dockerfile
                         git diff --cached --quiet || git commit -m "chore(ci): update Dockerfile after successful test"
                         git push origin HEAD:main
