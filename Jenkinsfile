@@ -27,21 +27,30 @@ pipeline{
                 sh 'echo "Application is running successfully"'
             }
         }
-
-        stage('Test Deployment') {
-            steps {
+        stage('Create Dockerfile'){
+            steps{
+                sh 'cp Dockerfile.template Dockerfile'
+                sh 'echo "Dockerfile created successfully"'
+            }
+        }
+        
+        stage('Test Deployment'){
+            steps{
+                // Build container using Dockerfile
                 sh 'docker build --network=host -t mushroom-app:latest .'
 
-                // Stop and remove existing container if any
+                // Stop any containers if any
                 sh 'docker stop mushroom-app || true'
                 sh 'docker rm mushroom-app || true'
 
-                // Run new container
+                // Run the container
                 sh 'docker run -d -p 5000:5000 --name mushroom-app mushroom-app:latest'
             }
         }
+
         stage('Push Image to Dockerhub'){
             steps{
+                // To be added
                 sh 'echo "Pushing Docker image to Docker Hub"'
             }
         }
